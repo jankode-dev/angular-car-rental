@@ -1,0 +1,14 @@
+<header>
+  <div class="bar">
+    <a class="logo" routerLink="/cars">Rent a Car</a>
+    <nav>
+      <a routerLink="/cars" routerLinkActive="active">Cars</a>
+      <a routerLink="/reservations" routerLinkActive="active">
+        Reservations
+        @if (store.count() > 0) {
+          <span class="badge">{{ store.count() }}</span>
+        }
+      </a>
+    </nav>
+  </div>
+</header>

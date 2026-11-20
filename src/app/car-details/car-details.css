@@ -1,0 +1,57 @@
+.back {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  align-items: start;
+  gap: 24px;
+}
+
+h2 {
+  margin: 0 0 8px;
+}
+
+.specs {
+  color: var(--muted);
+}
+
+.booking {
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.days {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.discount {
+  margin: 12px 0 0;
+  color: #1a7f37;
+}
+
+.total {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.booking .primary {
+  width: 100%;
+}
+
+.similar {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+}

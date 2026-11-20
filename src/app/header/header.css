@@ -1,0 +1,43 @@
+header {
+  background: #1f2328;
+}
+
+.bar {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #d0d7de;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+nav a.active {
+  color: white;
+  border-bottom-color: var(--accent);
+}
+
+.badge {
+  margin-left: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.8rem;
+}

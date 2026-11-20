@@ -1,0 +1,50 @@
+<a class="back" routerLink="/cars">&larr; All cars</a>
+
+@if (carResource.isLoading()) {
+  <p class="info">Loading car...</p>
+} @else if (carResource.error()) {
+  <p class="info error">Car with id {{ id() }} was not found.</p>
+} @else {
+  @if (car(); as car) {
+    <section class="details">
+      <div>
+        <h2>{{ car.make }} {{ car.model }}</h2>
+        <p class="specs">{{ car.category }}, {{ car.seats }} seats, {{ car.transmission }}</p>
+        <p>
+          {{ car.pricePerDay | currency: 'EUR' }} per day, minimum {{ car.minDays }}
+          {{ car.minDays === 1 ? 'day' : 'days' }}
+        </p>
+        <p class="info">Rent for 7 days or more and get 10% off.</p>
+      </div>
+
+      <div class="booking">
+        <div class="days">
+          <button (click)="changeDays(-1)" [disabled]="days() <= car.minDays">-</button>
+          <span>{{ days() }} {{ days() === 1 ? 'day' : 'days' }}</span>
+          <button (click)="changeDays(1)">+</button>
+        </div>
+
+        @if (discount() > 0) {
+          <p class="discount">{{ discount() | percent }} discount applied</p>
+        }
+
+        <p class="total">{{ total() | currency: 'EUR' }}</p>
+        <button class="primary" [disabled]="!car.available" (click)="reserve()">
+          {{ car.available ? 'Reserve' : 'Not available' }}
+        </button>
+      </div>
+    </section>
+
+    @if (similarCars().length > 0) {
+      <h3>Other {{ car.category }} cars</h3>
+      <ul class="similar">
+        @for (other of similarCars(); track other.id) {
+          <li>
+            <a [routerLink]="['/cars', other.id]">{{ other.make }} {{ other.model }}</a>
+            {{ other.pricePerDay | currency: 'EUR' }} per day
+          </li>
+        }
+      </ul>
+    }
+  }
+}

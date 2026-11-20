@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+article {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+article.unavailable {
+  opacity: 0.55;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 8px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.category {
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.category.electric {
+  background: #dafbe1;
+  border-color: #4ac26b;
+}
+
+.specs {
+  margin: 0;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.price small {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.not-available {
+  color: var(--muted);
+  font-size: 0.85rem;
+}

@@ -1,0 +1,35 @@
+<h2>Reservations</h2>
+
+@if (store.count() === 0) {
+  <p class="info">No reservations yet. <a routerLink="/cars">Pick a car</a></p>
+} @else {
+  <table>
+    <thead>
+      <tr>
+        <th>Car</th>
+        <th>Days</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (r of store.reservations(); track r.id) {
+        <tr>
+          <td>
+            <a [routerLink]="['/cars', r.car.id]">{{ r.car.make }} {{ r.car.model }}</a>
+          </td>
+          <td>{{ r.days }}</td>
+          <td>{{ r.total | currency: 'EUR' }}</td>
+          <td class="actions"><button (click)="store.remove(r.id)">Remove</button></td>
+        </tr>
+      }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">{{ store.count() }} {{ store.count() === 1 ? 'car' : 'cars' }}</td>
+        <td>{{ store.total() | currency: 'EUR' }}</td>
+        <td class="actions"><button (click)="store.clear()">Clear all</button></td>
+      </tr>
+    </tfoot>
+  </table>
+}

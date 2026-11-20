@@ -1,0 +1,35 @@
+<section class="filters">
+  <div class="categories">
+    @for (c of categories; track c) {
+      <button [class.selected]="c === category()" (click)="category.set(c)">{{ c }}</button>
+    }
+  </div>
+  <input
+    #searchBox
+    type="search"
+    placeholder="Search make or model"
+    (input)="search.set(searchBox.value)"
+  />
+</section>
+
+@if (carsResource.isLoading()) {
+  <p class="info">Loading cars...</p>
+} @else if (carsResource.error()) {
+  <p class="info error">
+    Could not load cars.
+    <button (click)="carsResource.reload()">Try again</button>
+  </p>
+} @else {
+  <div class="summary">
+    <p class="info">{{ cars().length }} of {{ carsResource.value().length }} cars</p>
+    <button (click)="carsResource.reload()">Refresh</button>
+  </div>
+
+  <ul class="grid">
+    @for (car of cars(); track car.id) {
+      <li><cr-car-card [car]="car" /></li>
+    } @empty {
+      <li class="info">No cars match "{{ search() }}".</li>
+    }
+  </ul>
+}

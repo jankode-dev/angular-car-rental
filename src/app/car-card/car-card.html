@@ -1,0 +1,19 @@
+<article [class.unavailable]="!car().available">
+  <header>
+    <h3>{{ car().make }} {{ car().model }}</h3>
+    <span class="category" [class.electric]="car().category === 'Electric'">{{
+      car().category
+    }}</span>
+  </header>
+
+  <p class="specs">{{ car().seats }} seats, {{ car().transmission }}</p>
+
+  <footer>
+    <span class="price">{{ car().pricePerDay | currency: 'EUR' }} <small>/ day</small></span>
+    @if (car().available) {
+      <a class="button" [routerLink]="['/cars', car().id]">Details</a>
+    } @else {
+      <span class="not-available">Not available</span>
+    }
+  </footer>
+</article>
